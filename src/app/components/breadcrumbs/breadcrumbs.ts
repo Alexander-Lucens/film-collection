@@ -17,8 +17,6 @@ interface Crumb {
 })
 export class Breadcrumbs {
   private filmServices = inject(FilmService);
-
-  films: Film[] = this.filmServices.filteredFilms();
   private router = inject(Router);
   crumbs = signal<Crumb[]>([{ label: 'Home', path: '/' }]);
 
@@ -38,7 +36,7 @@ export class Breadcrumbs {
     }
 
     const filmTitleId: number = Number(url.split('/films/')[1]);
-    const filmTitle = this.films.find(film => film.id === filmTitleId)?.title || 'Unknown Film';
+    const filmTitle = this.filmServices.getFilmById(filmTitleId)?.title || 'Unknown Film';
 
     if (url.startsWith('/films/')) {
       this.crumbs.set([
