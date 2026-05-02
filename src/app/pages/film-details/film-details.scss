@@ -1,0 +1,46 @@
+.film-details {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 3rem;
+  align-items: start;
+
+  button {
+    grid-column: 1 / -1;
+    width: fit-content;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.6rem 1.25rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    transition: all var(--transition);
+
+    &:hover {
+      border-color: var(--accent);
+      color: var(--text-primary);
+    }
+  }
+
+  img {
+    width: 100%;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+
+  &__info {
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      letter-spacing: 3px;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+  }
+}

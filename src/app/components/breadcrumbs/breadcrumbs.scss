@@ -1,0 +1,24 @@
+.breadcrumbs {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+
+  &__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0.6rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  &__link {
+    color: var(--text-secondary);
+    transition: color var(--transition);
+    &:hover { color: var(--accent); }
+  }
+
+  &__sep { color: var(--text-muted); }
+
+  &__current { color: var(--text-primary); font-weight: 500; }
+}

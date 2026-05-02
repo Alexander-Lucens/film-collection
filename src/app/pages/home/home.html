@@ -1,0 +1,23 @@
+<div class="home">
+  <input
+    type="text"
+    placeholder="Search films..."
+    appAutofocus
+    (input)="onSearch($event)"
+  />
+
+  @if (films().length > 0) {
+    <div class="film-list" role="list" #filmList>
+      @for (film of films(); track film.id) {
+        <div class="film-item" role="listitem" #filmItem tabindex="0">
+          <app-film-card
+            [film]="film"
+            (favoriteToggled)="onFavoriteToggle(film.id)"
+          />
+        </div>
+      }
+    </div>
+  } @else {
+    <p class="not-found">Nothing found 🎬</p>
+  }
+</div>
