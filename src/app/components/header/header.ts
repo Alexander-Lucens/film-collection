@@ -7,4 +7,10 @@ import { RouterLink } from '@angular/router';
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
-export class Header {}
+export class Header {
+  logoTitle = 'Film Collection';
+  navLinks = [
+    { path: '/', title: 'Home' },
+    { path: '/about', title: 'About' }
+  ];
+}

@@ -22,7 +22,7 @@ export const FILMS_DATA: Film[] =
     "duration": 148,
     "description": "Cobb is a skilled thief, the best of the best in the dangerous art of extraction: he steals valuable secrets from deep within the subconscious during sleep.",
     "posterUrl": "https://placehold.co/300x450?text=Inception",
-    "isFavorite": false
+    "isFavorite": true
   },
   {
     "id": 3,

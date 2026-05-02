@@ -21,6 +21,7 @@
     width: 100%;
     aspect-ratio: 2/3;
     object-fit: cover;
+    overflow: hidden;
   }
 
   &__info {
