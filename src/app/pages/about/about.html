@@ -1,0 +1,63 @@
+<section class="about">
+	<div class="about__hero">
+		<p class="about__eyebrow">About this project</p>
+		<h1>Film Collection</h1>
+		<p class="about__lead">
+			A compact Angular app for browsing films, searching the catalog, opening
+			details, and marking favorites in a clean, dark interface.
+		</p>
+
+		<ul class="about__summary" aria-label="Project summary">
+			@for (item of summary; track item) {
+				<li>{{ item }}</li>
+			}
+		</ul>
+	</div>
+
+	<div class="about__grid">
+		<article class="about__panel about__panel--wide">
+			<h2>Project story</h2>
+			<div class="about__sections">
+				@for (section of sections; track section.title) {
+					<section class="about__card">
+						<h3>{{ section.title }}</h3>
+						<p>{{ section.text }}</p>
+					</section>
+				}
+			</div>
+		</article>
+
+		<article class="about__panel">
+			<h2>At a glance</h2>
+			<dl class="about__details">
+				@for (detail of details; track detail.label) {
+					<div>
+						<dt>{{ detail.label }}</dt>
+						<dd>{{ detail.value }}</dd>
+					</div>
+				}
+			</dl>
+		</article>
+
+		<article class="about__panel about__panel--wide">
+			<h2>How to use it</h2>
+			<div class="about__steps">
+				@for (step of steps; track step.title) {
+					<div class="about__step">
+						<span>{{ step.title }}</span>
+						<p>{{ step.text }}</p>
+					</div>
+				}
+			</div>
+		</article>
+
+		<article class="about__panel">
+			<h2>Implementation notes</h2>
+			<ul class="about__notes">
+				<li>Film data lives in memory and is seeded from a local data file.</li>
+				<li>The service owns filtering, lookup, and favorite toggling.</li>
+				<li>The UI uses standalone Angular components and a custom duration pipe.</li>
+			</ul>
+		</article>
+	</div>
+</section>

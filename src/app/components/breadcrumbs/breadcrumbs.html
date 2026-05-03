@@ -1,8 +1,8 @@
 <nav class="breadcrumbs">
   <div class="breadcrumbs__inner">
-    @for (crumb of crumbs(); track crumb.label; let last = $last) {
+    @for (crumb of crumbs; track crumb.label; let last = $last) {
       @if (crumb.path && !last) {
-        <a [href]="crumb.path" class="breadcrumbs__link">{{ crumb.label }}</a>
+        <a href="/" (click)="navigateTo(crumb.path, $event)" class="breadcrumbs__link">{{ crumb.label }}</a>
         <span class="breadcrumbs__sep">›</span>
       } @else {
         <span class="breadcrumbs__current">{{ crumb.label }}</span>

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class FilmCard {
   film = input.required<Film>();
-  onToggleFavorite = output<number>();
+  favoriteToggled = output<number>();
 
   private router = inject(Router);
 
@@ -19,6 +19,6 @@ export class FilmCard {
 
   onToggleFavoriteClick(event: MouseEvent): void {
     event.stopPropagation();
-    this.onToggleFavorite.emit(this.film().id);
+    this.favoriteToggled.emit(this.film().id);
   }
 }

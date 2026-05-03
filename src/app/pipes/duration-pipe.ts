@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { min } from 'rxjs';
 
 @Pipe({
   name: 'duration',

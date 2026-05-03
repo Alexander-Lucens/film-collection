@@ -1,8 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { signal, effect } from '@angular/core';
+import { Router } from '@angular/router';
 import { FilmService } from '../../services/film.service';
-import { Film } from '../../models/film.model';
 
 interface Crumb {
   label: string;
@@ -18,31 +16,41 @@ interface Crumb {
 export class Breadcrumbs {
   private filmServices = inject(FilmService);
   private router = inject(Router);
-  crumbs = signal<Crumb[]>([{ label: 'Home', path: '/' }]);
-
-  constructor() {
-    effect(() => {});
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.buildCrumbs(event.urlAfterRedirects);
-      }
-    });
+  get crumbs(): Crumb[] {
+    return this.buildCrumbs(this.router.url);
   }
 
-  private buildCrumbs(url: string): void {
-    if (url === '/') {
-      this.crumbs.set([{ label: 'Home' }]);
+  navigateTo(path: string | undefined, event: MouseEvent): void {
+    if (!path) {
       return;
+    }
+
+    event.preventDefault();
+    this.router.navigateByUrl(path);
+  }
+
+  private buildCrumbs(url: string): Crumb[] {
+    if (url === '/') {
+      return [{ label: 'Home' }];
+    }
+
+    if (url === '/about') {
+      return [
+        { label: 'Home', path: '/' },
+        { label: 'About' },
+      ];
     }
 
     const filmTitleId: number = Number(url.split('/films/')[1]);
     const filmTitle = this.filmServices.getFilmById(filmTitleId)?.title || 'Unknown Film';
 
     if (url.startsWith('/films/')) {
-      this.crumbs.set([
+      return [
         { label: 'Home', path: '/' },
         { label: filmTitle }
-      ]);
+      ];
     }
+
+    return [{ label: 'Home', path: '/' }];
   }
 }
